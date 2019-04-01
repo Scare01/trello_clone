@@ -1,4 +1,4 @@
-export let loadStata = () => {
+export let loadState = () => {
   try {
     let State = localStorage.getItem("boardState");
     if (State === null) {

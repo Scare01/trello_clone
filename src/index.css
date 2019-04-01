@@ -6,13 +6,16 @@
 #home > .ui > .button {
   box-shadow: 0 0 10px #212521;
 }
-#home > .ui > .button:active {
-  color: red;
-}
 
 #home > .ui > .button:hover {
   transform: scale(1.1);
-  box-shadow: 0 5px 15px #212521;
+  box-shadow: 0 0 10px #212521;
+}
+
+#home > .ui > .button:active {
+  color: red;
+  box-shadow: 0 0 10px #212521;
+  transform: scale(1);
 }
 
 /*Main content*/
@@ -24,13 +27,15 @@
 
 /*Home page*/
 #addBoard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #84ce84;
   width: 300px;
   height: 100px;
   font-size: 1.5em;
   box-shadow: 0 5px 10px#627a62;
   text-align: center;
-  padding-top: 5%;
   color: white;
   text-shadow: 2px 2px #bba3a3;
 }
