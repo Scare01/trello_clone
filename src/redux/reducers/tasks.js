@@ -24,7 +24,7 @@ let tasks = (state = [], action) => {
         return task;
       });
     default:
-      return task;
+      return state;
   }
 };
 
