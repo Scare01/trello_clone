@@ -6,7 +6,7 @@ let AppHeader = () => (
   <div>
     <div id="home">
       <Header textAlign="center" size="huge">
-        <Link class="ui  linkedin icon button" to="/">
+        <Link className="ui  linkedin icon button" to="/">
           <Icon name="home" />
         </Link>
       </Header>

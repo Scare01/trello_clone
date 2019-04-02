@@ -14,6 +14,7 @@ import "semantic-ui-css/semantic.min.css";
 
 import HomePage from "./components/homePage";
 import AddBoardForm from "./components/addBoardForm";
+import OneBoard from "./components/boards/board";
 
 render(
   <BrowserRouter>
@@ -23,6 +24,7 @@ render(
         <div id="tasks">
           <Route exact path="/" component={HomePage} />
           <Route path="/addBoard" component={AddBoardForm} />
+          <Route path="/boards/:boardName" component={OneBoard} />
         </div>
       </div>
     </Provider>

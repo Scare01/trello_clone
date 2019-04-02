@@ -1,13 +1,27 @@
 import React from "react";
 import { Form, Button, Header, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { addBoard } from "../redux/actions/actions";
+import { connect } from "react-redux";
 
-export default class AddBoardForm extends React.Component {
+let mapDispatchToProps = dispatch => {
+  return {
+    addBoard: name => dispatch(addBoard(name))
+  };
+};
+
+class AddBoardFormClass extends React.Component {
   state = {
-    name: ""
+    name: "",
+    isOpen: true
   };
 
+  AddBoard = () => {
+    this.props.addBoard(this.state.name);
+    this.setState({ name: "", isOpen: false });
+  };
   render() {
+    if (!this.state.isOpen) return <Redirect to="/" />;
     return (
       <div id="addBoardForm">
         <div id="addBoardFormHead">
@@ -28,7 +42,7 @@ export default class AddBoardForm extends React.Component {
             />
           </div>
 
-          <Button type="submit" color="white">
+          <Button type="submit" color="white" disabled={!this.state.name}>
             Create
           </Button>
         </Form>
@@ -36,3 +50,10 @@ export default class AddBoardForm extends React.Component {
     );
   }
 }
+
+let AddBoardForm = connect(
+  null,
+  mapDispatchToProps
+)(AddBoardFormClass);
+
+export default AddBoardForm;
