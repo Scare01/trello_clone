@@ -20,8 +20,13 @@ let List = ({ boards }) =>
     return (
       <Link
         key={board.id}
-        to={linkToBoard}
-        params={{ board: board }}
+        //to={linkToBoard}
+        to={{
+          pathname: "/board/" + board.name,
+          state: {
+            board: board
+          }
+        }}
         //  clickDelete={clickDelete}
         //  clickEdit={clickEdit}
         className="ui  button"

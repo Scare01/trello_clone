@@ -2,10 +2,11 @@ import React from "react";
 
 export default class OneBoard extends React.Component {
   render() {
-    console.log(this.props.board);
+    let { board } = this.props.location.state;
+
     return (
       <div>
-        <h1>Board</h1>
+        <h1>{board.name}</h1>
       </div>
     );
   }
