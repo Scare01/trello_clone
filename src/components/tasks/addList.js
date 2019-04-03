@@ -15,11 +15,11 @@ export default class AddList extends React.Component {
 
   render() {
     let iconName = this.state.isOpen ? "close" : "plus";
-    let AddListForm = this.state.isOpen ? <AddListForm /> : null;
+    let AddList = this.state.isOpen ? <AddListForm /> : null;
 
     return (
       <div id="addForm">
-        {AddListForm}
+        {AddList}
         <Button id="addListButton" icon onClick={this.clickListButton}>
           <Icon name={iconName} />
         </Button>
