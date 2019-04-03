@@ -4,6 +4,8 @@ import { Header } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 //import { connect } from "react-redux";
 
+import AddList from "../tasks/addList";
+
 class OneBoard extends React.Component {
   state = {
     deleted: false
@@ -18,6 +20,7 @@ class OneBoard extends React.Component {
         <Header id="boardHeader" as="h1">
           {board.name}
         </Header>
+        <AddList />
       </div>
     );
   }

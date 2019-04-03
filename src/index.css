@@ -80,8 +80,8 @@
 }
 
 #breakLine {
-  margin-top: 10px;
-  height: 80%;
+  margin-top: 15px;
+  height: 70%;
   border: 0.5px solid #cacaca;
 }
 
@@ -144,4 +144,29 @@
 
 #boardHeader {
   display: flex;
+}
+
+/*Lists*/
+#addForm {
+  display: flex;
+}
+
+#addListForm {
+  width: 250px;
+  font-size: 1.2em;
+  background-color: #e6e0e0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#addListForm > .field > .input {
+  margin-top: 5px;
+  width: 85%;
+}
+#addListForm > .button {
+  width: 50%;
+  margin: auto;
 }
