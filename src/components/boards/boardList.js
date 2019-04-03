@@ -23,6 +23,7 @@ let List = ({ boards }) =>
         //to={linkToBoard}
         to={{
           pathname: "/board/" + board.name,
+          // this state passing props through Link
           state: {
             board: board
           }
