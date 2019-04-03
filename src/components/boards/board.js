@@ -1,9 +1,12 @@
 import React from "react";
 
-let OneBoard = ({ name }) => (
-  <div>
-    <h1>{name}</h1>
-  </div>
-);
-
-export default OneBoard;
+export default class OneBoard extends React.Component {
+  render() {
+    console.log(this.props.board);
+    return (
+      <div>
+        <h1>Board</h1>
+      </div>
+    );
+  }
+}

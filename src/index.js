@@ -24,7 +24,7 @@ render(
         <div id="tasks">
           <Route exact path="/" component={HomePage} />
           <Route path="/addBoard" component={AddBoardForm} />
-          <Route path="/boards/:boardName" component={OneBoard} />
+          <Route path="/board/:boardName" component={OneBoard} />
         </div>
       </div>
     </Provider>

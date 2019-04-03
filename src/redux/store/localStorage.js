@@ -4,7 +4,7 @@ export let loadState = () => {
     if (State === null) {
       return undefined;
     }
-    return JSON.parese(State);
+    return JSON.parse(State);
   } catch (err) {
     return undefined;
   }

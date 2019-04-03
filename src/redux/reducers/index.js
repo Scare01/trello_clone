@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 import boards from "./boards";
-import tasks from "./tasks";
 
-let rootReducer = combineReducers({ boards, tasks });
+let rootReducer = combineReducers({ boards });
 
 export default rootReducer;

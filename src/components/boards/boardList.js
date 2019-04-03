@@ -14,17 +14,19 @@ let mapDispatchToProps = dispatch => {
   };
 };
 
-let List = ({ boards, clickDelete, clickEdit }) =>
+let List = ({ boards }) =>
   boards.map(board => {
     let linkToBoard = "/board/" + board.name + "/";
     return (
       <Link
+        key={board.id}
         to={linkToBoard}
-        clickDelete={clickDelete}
-        clickEdit={clickEdit}
-        name={board.name}
+        params={{ board: board }}
+        //  clickDelete={clickDelete}
+        //  clickEdit={clickEdit}
         className="ui  button"
         id="Board"
+        board={board}
       >
         {board.name}
       </Link>

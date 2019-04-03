@@ -4,6 +4,7 @@ import { loadState, saveState } from "./localStorage";
 import throttle from "lodash/throttle";
 
 let State = loadState();
+
 let store = createStore(rootReducer, State);
 
 store.subscribe(
