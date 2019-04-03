@@ -1,41 +1,43 @@
 import React from "react";
-import { deleteBoard, editBoard } from "../../redux/actions/actions";
+import { deleteBoard } from "../../redux/actions/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { Button, Icon } from "semantic-ui-react";
+
+let mapDispatchToProps = dispatch => {
+  return {
+    clickDelete: id => dispatch(deleteBoard(id))
+  };
+};
 
 let mapStateToProps = state => ({
   boards: state.boards
 });
 
-let mapDispatchToProps = dispatch => {
-  return {
-    clickDelete: id => dispatch(deleteBoard(id)),
-    clickEdit: id => dispatch(editBoard(id))
-  };
-};
-
-let List = ({ boards }) =>
+let List = ({ boards, clickDelete }) =>
   boards.map(board => {
-    let linkToBoard = "/board/" + board.name + "/";
     return (
-      <Link
-        key={board.id}
-        //to={linkToBoard}
-        to={{
-          pathname: "/board/" + board.name,
-          // this state passing props through Link
-          state: {
-            board: board
-          }
-        }}
-        //  clickDelete={clickDelete}
-        //  clickEdit={clickEdit}
-        className="ui  button"
-        id="Board"
-        board={board}
-      >
-        {board.name}
-      </Link>
+      <div id="Board">
+        <Link
+          key={board.id}
+          to={{
+            pathname: "/board/" + board.name,
+            // this state passing props through Link
+            state: {
+              board: board
+            }
+          }}
+          className="ui  button"
+          board={board}
+          id="boardLink"
+        >
+          {board.name}
+        </Link>
+        <div id="breakLine" />
+        <Button icon id="boardTrash" onClick={() => clickDelete(board.id)}>
+          <Icon name="trash" />
+        </Button>
+      </div>
     );
   });
 

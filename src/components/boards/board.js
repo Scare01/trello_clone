@@ -1,13 +1,26 @@
 import React from "react";
+import { Header } from "semantic-ui-react";
 
-export default class OneBoard extends React.Component {
+import { Redirect } from "react-router-dom";
+//import { connect } from "react-redux";
+
+class OneBoard extends React.Component {
+  state = {
+    deleted: false
+  };
+
   render() {
+    if (this.props.deleted) return <Redirect to="/" />;
     let { board } = this.props.location.state; // load passing though Link data
 
     return (
-      <div>
-        <h1>{board.name}</h1>
+      <div id="board">
+        <Header id="boardHeader" as="h1">
+          {board.name}
+        </Header>
       </div>
     );
   }
 }
+
+export default OneBoard;
