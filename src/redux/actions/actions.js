@@ -4,7 +4,9 @@ import {
   EDIT_BOARD,
   ADD_TASK,
   DELETE_TASK,
-  COMPLETE_TASK
+  COMPLETE_TASK,
+  ADD_LIST,
+  DELETE_LIST
 } from "../constants/actionTypes";
 import v4 from "uuid";
 
@@ -39,5 +41,17 @@ export const deleteTask = id => ({
 
 export const completedTask = id => ({
   type: COMPLETE_TASK,
+  id
+});
+
+export const addList = (boardId, name) => ({
+  type: ADD_LIST,
+  id: v4(),
+  boardId,
+  name
+});
+
+export const deleteList = id => ({
+  type: DELETE_LIST,
   id
 });

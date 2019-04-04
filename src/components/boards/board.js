@@ -2,11 +2,15 @@ import React from "react";
 import { Header } from "semantic-ui-react";
 
 import { Redirect } from "react-router-dom";
-//import { connect } from "react-redux";
+import { connect } from "react-redux";
 
 import AddList from "../tasks/addList";
 
-class OneBoard extends React.Component {
+let mapStateToProps = state => ({
+  boards: state.boards
+});
+
+class OneBoardClass extends React.Component {
   state = {
     deleted: false
   };
@@ -20,10 +24,16 @@ class OneBoard extends React.Component {
         <Header id="boardHeader" as="h1">
           {board.name}
         </Header>
-        <AddList />
+        <BoardLists />
+        <AddList boardId={board.id} />
       </div>
     );
   }
 }
+
+let OneBoard = connect(
+  null,
+  mapStateToProps
+)(OneBoardClass);
 
 export default OneBoard;

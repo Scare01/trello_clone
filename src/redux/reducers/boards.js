@@ -1,4 +1,9 @@
-import { ADD_BOARD, DELETE_BOARD, EDIT_BOARD } from "../constants/actionTypes";
+import {
+  ADD_BOARD,
+  DELETE_BOARD,
+  EDIT_BOARD,
+  ADD_LIST
+} from "../constants/actionTypes";
 
 let boards = (state = [], action) => {
   switch (action.type) {
@@ -8,7 +13,7 @@ let boards = (state = [], action) => {
         {
           id: action.id,
           name: action.name,
-          tasks: []
+          lists: []
         }
       ];
     case EDIT_BOARD:
@@ -23,6 +28,22 @@ let boards = (state = [], action) => {
       });
     case DELETE_BOARD:
       return state.filter(board => board.id !== action.id);
+    case ADD_LIST:
+      return state.map(board => {
+        if (board.id === action.boardId) {
+          return Object.assign({}, board, {
+            ...board,
+            lists: [
+              ...board.lists,
+              {
+                id: action.id,
+                name: action.name
+              }
+            ]
+          });
+        }
+        return board;
+      });
     default:
       return state;
   }
