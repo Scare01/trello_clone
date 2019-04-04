@@ -16,7 +16,7 @@ export default class AddList extends React.Component {
   render() {
     let iconName = this.state.isOpen ? "close" : "plus";
     let AddList = this.state.isOpen ? (
-      <AddListForm boardId={this.props.boardId} />
+      <AddListForm boardId={this.props.boardIds} />
     ) : null;
 
     return (
