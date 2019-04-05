@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import AddList from "../tasks/addList";
+import BoardLists from "../tasks/boardLists";
 
 let mapStateToProps = state => ({
   boards: state.boards
@@ -24,8 +25,8 @@ class OneBoardClass extends React.Component {
         <Header id="boardHeader" as="h1">
           {board.name}
         </Header>
-        <BoardLists />
-        <AddList boardId={board.id} />
+        <BoardLists board={board} />
+        <AddList board={board} />
       </div>
     );
   }

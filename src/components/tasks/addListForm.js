@@ -1,28 +1,44 @@
 import React from "react";
 import { Form, Button } from "semantic-ui-react";
-//import AddList from "./addList";
+import { addList } from "../../redux/actions/actions";
+import { connect } from "react-redux";
 
-let mapStateToProps = state => ({
-  boards: state.boards
-});
+let mapDispatchToProps = dispatch => {
+  return {
+    addList: (boardId, name) => dispatch(addList(boardId, name))
+  };
+};
 
-export default class AddListForm extends React.Component {
+class AddListFormClass extends React.Component {
   state = {
     name: ""
   };
 
+  addList = () => {
+    this.props.addList(this.props.board.id, this.state.name);
+    this.props.closeForm();
+  };
+
   render() {
-    console.log(this.props.boardId);
     return (
-      <Form id="addListForm">
+      <Form id="addListForm" onSubmit={this.addList}>
         <Form.Input
           type="text"
           label="List name"
           value={this.state.name}
           onChange={e => this.setState({ name: e.target.value })}
         />
-        <Button type="submit">Add</Button>
+        <Button type="submit" disabled={!this.state.name}>
+          Add
+        </Button>
       </Form>
     );
   }
 }
+
+let AddListForm = connect(
+  null,
+  mapDispatchToProps
+)(AddListFormClass);
+
+export default AddListForm;
