@@ -17,7 +17,7 @@ let mapStateToProps = state => ({
 let List = ({ boards, clickDelete }) =>
   boards.map(board => {
     return (
-      <div id="Board">
+      <div id="Board" key={board.id}>
         <Link
           key={board.id}
           to={{

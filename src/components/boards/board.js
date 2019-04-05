@@ -20,6 +20,8 @@ class OneBoardClass extends React.Component {
     if (this.props.deleted) return <Redirect to="/" />;
     let { board } = this.props.location.state; // load passing though Link data
 
+    //console.log(board);
+
     return (
       <div id="board">
         <Header id="boardHeader" as="h1">
