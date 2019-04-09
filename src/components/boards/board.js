@@ -13,14 +13,13 @@ let mapStateToProps = state => ({
 
 class OneBoardClass extends React.Component {
   state = {
+    board: "",
     deleted: false
   };
 
   render() {
     if (this.props.deleted) return <Redirect to="/" />;
     let { board } = this.props.location.state; // load passing though Link data
-
-    //console.log(board);
 
     return (
       <div id="board">
