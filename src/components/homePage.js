@@ -69,7 +69,7 @@ class HomePageClass extends React.Component {
     );
     return (
       <div>
-        <div id="boards">
+        <div className="boards">
           {createBoard}
           <BoardList />
         </div>

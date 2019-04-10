@@ -2,14 +2,9 @@ import React from "react";
 import { Header } from "semantic-ui-react";
 
 import { Redirect } from "react-router-dom";
-//import { connect } from "react-redux";
 
 import AddList from "../tasks/addList";
 import BoardLists from "../tasks/boardLists";
-
-//let mapStateToProps = state => ({
-//  boards: state.boards
-//});
 
 class OneBoard extends React.Component {
   state = {
@@ -21,23 +16,19 @@ class OneBoard extends React.Component {
     if (this.props.deleted) return <Redirect to="/" />;
     let { board } = this.props.location.state; // load passing though Link data
 
-    console.log(this.props.boards);
-
     return (
-      <div id="board">
+      <div>
         <Header id="boardHeader" as="h1">
           {board.name}
         </Header>
-        <BoardLists boardFromBoard={board} />
-        <AddList board={board} />
+
+        <div className="boards">
+          <AddList board={board} />
+          <BoardLists boardFromBoard={board} />
+        </div>
       </div>
     );
   }
 }
-
-//let OneBoard = connect(
-// null,
-// mapStateToProps
-//)(OneBoardClass);
 
 export default OneBoard;
