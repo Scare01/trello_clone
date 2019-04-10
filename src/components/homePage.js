@@ -4,10 +4,6 @@ import BoardList from "./boards/boardList";
 import { Header, Icon, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-let mapStateToProps = state => ({
-  boards: state.boards
-});
-
 let mapDispatchToProps = dispatch => {
   return {
     addBoard: name => dispatch(addBoard(name))
@@ -83,7 +79,7 @@ class HomePageClass extends React.Component {
 }
 
 let HomePage = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(HomePageClass);
 

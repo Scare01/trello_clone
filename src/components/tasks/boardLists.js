@@ -1,16 +1,21 @@
 import React from "react";
 import OneList from "./list";
 
-export default class BoardLists extends React.Component {
-  render() {
-    let board = this.props.board;
+import { connect } from "react-redux";
 
-    console.log(board);
+let mapStateToProps = state => ({
+  boards: state.boards
+});
 
-    let List = board.lists.length
-      ? board.lists.map(list => <OneList list={list} key={list.id} />)
-      : null;
+let BoardListsObj = ({ boards, boardFromBoard }) =>
+  boards.map(board =>
+    board.id === boardFromBoard.id
+      ? board.lists.length
+        ? board.lists.map(list => <OneList list={list} key={list.id} />)
+        : null
+      : null
+  );
 
-    return <div>{List}</div>;
-  }
-}
+let BoardLists = connect(mapStateToProps)(BoardListsObj);
+
+export default BoardLists;
