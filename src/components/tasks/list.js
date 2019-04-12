@@ -2,11 +2,21 @@ import React from "react";
 import { Button, Header, Icon } from 'semantic-ui-react';
 
 import AddTask from './addTask';
+import Tasks from './tasks';
+
+import { addTask } from '../../redux/actions/actions';
+import { connect } from "react-redux";
 
 
-// can add in input boardId
+let mapDispatchToProps = dispatch => {
+  return {
+    addTaskToList: (boardId, listId, name) => dispatch(addTask(boardId,listId, name))
+  };
+};
 
-let OneList = ({ list, clickDeleteList }) => (
+
+
+let OneListObj = ({ list, clickDeleteList, boardId,  addTaskToList}) => (
   <div className="List">
     <Header as='h2' textAlign='center' className="headerList">
       {list.name}
@@ -14,8 +24,11 @@ let OneList = ({ list, clickDeleteList }) => (
         <Icon name='trash' size='tiny'/>
       </Button>
     </Header>
-    <AddTask />
+    <AddTask addTaskToList={(name) => addTaskToList(boardId, list.id, name)} />
+    <Tasks listId={list.id} boardId={boardId} />
   </div>
 );
+
+let OneList = connect(null, mapDispatchToProps)(OneListObj);
 
 export default OneList;

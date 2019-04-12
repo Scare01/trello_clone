@@ -2,7 +2,7 @@ import {
   ADD_BOARD,
   DELETE_BOARD,
   EDIT_BOARD,
-  //ADD_TASK,
+  ADD_TASK,
   // DELETE_TASK,
   // COMPLETE_TASK,
   ADD_LIST,
@@ -38,4 +38,12 @@ export const deleteList = (boardId, id) => ({
   type: DELETE_LIST,
   boardId,
   id
+});
+
+export const addTask = (boardId, listId, name) => ({
+  type: ADD_TASK,
+  id: v4(),
+  boardId,
+  listId,
+  name
 });

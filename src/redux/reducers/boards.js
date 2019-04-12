@@ -3,7 +3,8 @@ import {
   DELETE_BOARD,
   EDIT_BOARD,
   ADD_LIST,
-  DELETE_LIST
+  DELETE_LIST,
+  ADD_TASK
 } from "../constants/actionTypes";
 
 let boards = (state = [], action) => {
@@ -38,7 +39,8 @@ let boards = (state = [], action) => {
               ...board.lists,
               {
                 id: action.id,
-                name: action.name
+                name: action.name,
+                tasks: []
               }
             ]
           });
@@ -56,7 +58,28 @@ let boards = (state = [], action) => {
           })
         }
         return board;
-      })
+      });
+      case ADD_TASK:
+        return state.map(board => {
+          if(board.id === action.boardId) {
+            board.lists.map(list => {
+              if(list.id === action.listId) {
+                return Object.assign({}, list, {
+                  ...list,
+                  tasks: [
+                    ...list.tasks,
+                    {
+                      id: action.id,
+                      name: action.name
+                    }
+                  ]
+                })
+              }
+              return list;
+            })
+          }
+          return board;
+        })
     default:
       return state;
   }

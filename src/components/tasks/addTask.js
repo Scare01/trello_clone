@@ -7,7 +7,7 @@ class AddTask extends React.Component {
   }
 
   addTask = () => {
-    //some code
+    this.props.addTaskToList(this.state.name);
   }
 
   render(){
