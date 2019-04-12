@@ -19,6 +19,10 @@ class AddListFormClass extends React.Component {
     this.props.closeForm();
   };
 
+  closeForm = () => {
+    this.props.closeForm();
+  }
+
   render() {
     return (
       <Form id="addListForm" onSubmit={this.addList}>
@@ -28,9 +32,14 @@ class AddListFormClass extends React.Component {
           value={this.state.name}
           onChange={e => this.setState({ name: e.target.value })}
         />
-        <Button type="submit" disabled={!this.state.name}>
+        <Button.Group>
+        <Button type="submit" disabled={!this.state.name} color="linkedin">
           Add
         </Button>
+        <Button.Or color="green" />
+        <Button onClick={this.closeForm} color="red">Cancel</Button>
+        </Button.Group>
+        
       </Form>
     );
   }

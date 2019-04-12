@@ -20,7 +20,7 @@ let BoardListsObj = ({ boards, boardFromBoard, clickDeleteList }) =>
   boards.map(board =>
     board.id === boardFromBoard.id
       ? board.lists.length
-        ? board.lists.map(list => <OneList list={list} key={list.id}    clickDeleteList={() => clickDeleteList(board.id, list.id)} />)
+        ? board.lists.map(list => <OneList list={list} key={list.id} boardId={board.id} clickDeleteList={() => clickDeleteList(board.id, list.id)} />)
         : null
       : null
   );

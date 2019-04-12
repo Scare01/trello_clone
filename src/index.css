@@ -149,12 +149,18 @@
 /*Lists*/
 #addForm {
   display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+#addListButton {
+  height: 40px;
 }
 
 #addListForm {
   width: 250px;
   font-size: 1.2em;
-  background-color: #e6e0e0;
+  box-shadow: 0 5px 10px#141414;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -173,6 +179,21 @@
 
 .List {
   margin: 10px;
-  width: 200px;
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
   box-shadow: 0 5px 10px#141414;
 }
+
+.headerList {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#delelteListButton {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+

@@ -23,9 +23,10 @@ class OneBoard extends React.Component {
         </Header>
 
         <div className="boards">
-          <AddList board={board} />
+          
           <BoardLists boardFromBoard={board} />
         </div>
+        <AddList board={board} />
       </div>
     );
   }

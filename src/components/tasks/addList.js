@@ -20,7 +20,9 @@ export default class AddList extends React.Component {
   };
 
   render() {
-    let iconName = this.state.isOpen ? "close" : "plus";
+    let addButton = this.state.isOpen ? null : <Button id="addListButton" icon  onClick={this.clickListButton} color="green">
+        <Icon name="plus" />
+      </Button>;
     let AddList = this.state.isOpen ? (
       <AddListForm board={this.props.board} closeForm={this.closeForm} />
     ) : null;
@@ -28,9 +30,7 @@ export default class AddList extends React.Component {
     return (
       <div id="addForm">
         {AddList}
-        <Button id="addListButton" icon onClick={this.clickListButton}>
-          <Icon name={iconName} />
-        </Button>
+        {addButton}
       </div>
     );
   }
