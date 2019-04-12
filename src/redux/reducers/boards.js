@@ -2,7 +2,8 @@ import {
   ADD_BOARD,
   DELETE_BOARD,
   EDIT_BOARD,
-  ADD_LIST
+  ADD_LIST,
+  DELETE_LIST
 } from "../constants/actionTypes";
 
 let boards = (state = [], action) => {
@@ -44,6 +45,18 @@ let boards = (state = [], action) => {
         }
         return board;
       });
+      case DELETE_LIST:
+      return state.map(board => {
+        if (board.id === action.boardId) {
+          return Object.assign({}, board, {
+            ...board,
+            lists: [
+              ...board.lists.filter(list => list.id !== action.id)
+            ]
+          })
+        }
+        return board;
+      })
     default:
       return state;
   }

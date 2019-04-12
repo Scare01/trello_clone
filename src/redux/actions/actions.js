@@ -34,7 +34,8 @@ export const addList = (boardId, name) => ({
   name
 });
 
-export const deleteList = id => ({
+export const deleteList = (boardId, id) => ({
   type: DELETE_LIST,
+  boardId,
   id
 });
