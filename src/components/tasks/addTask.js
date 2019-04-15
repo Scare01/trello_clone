@@ -16,7 +16,7 @@ class AddTask extends React.Component {
 
   render(){
     return (
-      <Form onSubmit={this.addTask}>
+      <Form onSubmit={this.addTask} className="taskAdd">
         <Form.Input 
           type="text"
           value={this.state.name}

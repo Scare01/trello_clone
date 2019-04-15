@@ -4,7 +4,8 @@ import {
   EDIT_BOARD,
   ADD_LIST,
   DELETE_LIST,
-  ADD_TASK
+  ADD_TASK,
+  COMPLETE_TASK
 } from "../constants/actionTypes";
 
 let boards = (state = [], action) => {
@@ -61,14 +62,15 @@ let boards = (state = [], action) => {
       });
       case ADD_TASK:  
         let boardsObj = [...state]
-        boardsObj.map(board => {
+        let { newBoards } = boardsObj.map(board => {
           if (board.id === action.boardId) {
             board.lists.map(list => {
               if(list.id === action.listId) {
                 list.tasks.push(
                   {
                   id: action.id,
-                  name: action.name
+                  name: action.name,
+                  completed: false
                   }
                 )
               }
@@ -81,10 +83,35 @@ let boards = (state = [], action) => {
 
         return state.map(board => {
           return Object.assign({}, board, {
-            ...boardsObj
+            ...newBoards
           })
         })
-          
+      case COMPLETE_TASK: 
+        let boarObj = [...state];
+        let { newBoard } = boarObj.map(board => {
+          if(board.id === action.boardId) {
+            board.lists.map(list => {
+              if(list.id === action.listId) {
+                list.tasks.map(task => {
+
+                  if(task.id === action.taskId) {
+                    task.completed = !task.completed
+                  }
+                  return task;
+                })
+              }
+              return list;
+            })
+          }
+          return board;
+        })
+        
+        return state.map(board => {
+          return Object.assign({}, board, {
+            ...newBoard
+          })
+        })
+
       default:
         return state;
   }

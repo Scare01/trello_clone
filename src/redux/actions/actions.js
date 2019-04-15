@@ -4,7 +4,7 @@ import {
   EDIT_BOARD,
   ADD_TASK,
   // DELETE_TASK,
-  // COMPLETE_TASK,
+ COMPLETE_TASK,
   ADD_LIST,
   DELETE_LIST
 } from "../constants/actionTypes";
@@ -47,3 +47,10 @@ export const addTask = (boardId, listId, name) => ({
   listId,
   name
 });
+
+export const completeTask = (boardId, listId, taskId) => ({
+  type: COMPLETE_TASK,
+  boardId,
+  listId,
+  taskId
+})
