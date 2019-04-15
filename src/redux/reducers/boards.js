@@ -70,7 +70,8 @@ let boards = (state = [], action) => {
                   {
                   id: action.id,
                   name: action.name,
-                  completed: false
+                  completed: false,
+                  parentId: action.listId
                   }
                 )
               }
