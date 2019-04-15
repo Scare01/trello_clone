@@ -59,29 +59,34 @@ let boards = (state = [], action) => {
         }
         return board;
       });
-      case ADD_TASK:
-        return state.map(board => {
-          if(board.id === action.boardId) {
+      case ADD_TASK:  
+        let boardsObj = [...state]
+        boardsObj.map(board => {
+          if (board.id === action.boardId) {
             board.lists.map(list => {
               if(list.id === action.listId) {
-                return Object.assign({}, list, {
-                  ...list,
-                  tasks: [
-                    ...list.tasks,
-                    {
-                      id: action.id,
-                      name: action.name
-                    }
-                  ]
-                })
+                list.tasks.push(
+                  {
+                  id: action.id,
+                  name: action.name
+                  }
+                )
               }
               return list;
             })
+          
           }
           return board;
         })
-    default:
-      return state;
+
+        return state.map(board => {
+          return Object.assign({}, board, {
+            ...boardsObj
+          })
+        })
+          
+      default:
+        return state;
   }
 };
 

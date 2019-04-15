@@ -10,7 +10,9 @@ import { connect } from "react-redux";
 
 let mapDispatchToProps = dispatch => {
   return {
-    addTaskToList: (boardId, listId, name) => dispatch(addTask(boardId,listId, name))
+    addTaskToList: (boardId, listId, name) => 
+      dispatch(addTask(boardId,listId, name))
+    
   };
 };
 
@@ -18,14 +20,14 @@ let mapDispatchToProps = dispatch => {
 
 let OneListObj = ({ list, clickDeleteList, boardId,  addTaskToList}) => (
   <div className="List">
-    <Header as='h2' textAlign='center' className="headerList">
+    <Header as='h2' className="headerList">
       {list.name}
       <Button onClick={clickDeleteList} icon id="delelteListButton" >
-        <Icon name='trash' size='tiny'/>
+        <Icon name='trash' size='mini'/>
       </Button>
     </Header>
     <AddTask addTaskToList={(name) => addTaskToList(boardId, list.id, name)} />
-    <Tasks listId={list.id} boardId={boardId} />
+    <Tasks listId={list.id} boardId={boardId} id='tasksList' />
   </div>
 );
 

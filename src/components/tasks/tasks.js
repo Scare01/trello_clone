@@ -11,14 +11,14 @@ let mapStateToProps = state => ({
 let TasksObj = ({ boards, listId, boardId }) => (
   boards.map(board => 
     board.id === boardId ? (
-
       board.lists.length ? (
         board.lists.map(list => 
           list.id === listId ? (
             list.tasks.length ? (
               list.tasks.map(task => (
-                <div>
+                <div key={task.id} id='task'>
                   {task.name}
+                
                 </div>
               ))
             ) : null
